@@ -12,11 +12,17 @@ class PrimaryControler extends GetxController {
   var isLoading = true.obs;
   var restaurents = [].obs;
   var search_results = [].obs;
+  var hasOrderHistory = false.obs;
+  var historyItems = [].obs;
+
   AppData? _appData;
   @override
   void onInit() {
     super.onInit();
-    getData().whenComplete(() => loadLists());
+    getData().whenComplete(() {
+      loadLists();
+      checkIFLatestOrderAvailable();
+    });
   }
 
   Future<void> getData() async {
@@ -24,9 +30,7 @@ class PrimaryControler extends GetxController {
   }
 
   void loadLists() {
-    for (Shop s in _appData!.shops!) {
-      restaurents.add(s);
-    }
+    restaurents.assignAll(_appData!.shops!);
   }
 
   //
@@ -44,6 +48,23 @@ class PrimaryControler extends GetxController {
           if (!search_results.contains(s)) search_results.add(s);
         }
       }
+    }
+  }
+
+  void saveCokies(String shopID, String itemID) async {
+    String orderID = shopID + "/#*" + itemID;
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    pref.setString('latestOrder', orderID);
+  }
+
+  checkIFLatestOrderAvailable() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    if (pref.getString('latestOrder') != null) {
+      var ids = pref.getString('latestOrder')!.split('/#*');
+      String shopID = ids[0];
+      String itemID = ids[1];
+      historyItems.add(getItem(itemID, getShop(shopID)!));
+      hasOrderHistory(true);
     }
   }
 
