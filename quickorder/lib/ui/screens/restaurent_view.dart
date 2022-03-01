@@ -50,7 +50,7 @@ class _RestaurentViewState extends State<RestaurentView> {
           body: CustomScrollView(
             controller: _scrollController,
             slivers: [
-              AppBarRestaurents(),
+              appBarRestaurents(),
               getSlivers(),
             ],
           ),
@@ -59,7 +59,7 @@ class _RestaurentViewState extends State<RestaurentView> {
     );
   }
 
-  SliverAppBar AppBarRestaurents() {
+  SliverAppBar appBarRestaurents() {
     return SliverAppBar(
       backgroundColor: color2,
       expandedHeight: MediaQuery.of(context).size.height * 0.2,
