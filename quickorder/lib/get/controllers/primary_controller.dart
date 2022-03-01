@@ -6,9 +6,10 @@ import 'package:quickorder/logic/models/models.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../logic/helpers/app_manager.dart';
+import '../../ui/utils/reusable_widgets.dart';
 
 class PrimaryControler extends GetxController {
-  var isLoading = false.obs;
+  var isLoading = true.obs;
   var restaurents = [].obs;
   var search_results = [].obs;
   AppData? _appData;
