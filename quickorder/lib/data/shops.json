@@ -1,0 +1,221 @@
+{
+    "Shops":[
+        {
+            "id":"1",
+            "shopName":"Steers",
+            "shopLocation":"Mellvile",
+            "openTime":"9:00 am",
+            "closeTime":"19:00 pm",
+            "imageUrl":"https://app.steers.co.za/img/logo.142a187c.png",
+            "adheaderImgUrl":"http://www.food-blog.co.za/wp-content/uploads/2020/07/103283756_10157614958947636_6373096916818534417_n-758x288.jpg",
+            "categories":[
+                {
+                    "catID":"1",
+                    "catName":"Burger"
+                },
+                {
+                    "catID":"2",
+                    "catName":"Braai"
+                },
+                {
+                    "catID":"3",
+                    "catName":"Frozen"
+                },
+                {
+                    "catID":"4",
+                    "catName":"Drinks"
+                }
+            ],
+                        "Items":[
+                            {
+                                "id":"1",
+                                "shopID":"1",
+                                "itemName":"Steers Burger",
+                                "itemDescription":"this is a burger",
+                                "catID":"1",
+                                "imageUrl":"https://kauai.co.za/wp-content/uploads/2020/10/The-Normal-Burger-750x750px.jpg"
+                                ,"price":36.99
+                            },
+                            {
+                                "id":"2",
+                                "shopID":"1",
+                                "itemName":"Steers Burger",
+                                "itemDescription":"this is a burger",
+                                "catID":"1",
+                                "imageUrl":"https://kauai.co.za/wp-content/uploads/2020/10/The-Normal-Burger-750x750px.jpg"
+                                ,"price":24.99
+                            },
+                            {
+                                "id":"3",
+                                "shopID":"1",
+                                "itemName":"Steers Burger",
+                                "itemDescription":"this is a burger",
+                                "catID":"1",
+                                "imageUrl":"https://kauai.co.za/wp-content/uploads/2020/10/The-Normal-Burger-750x750px.jpg"
+                                ,"price":185.99
+                            },
+                            {
+                                "id":"4",
+                                "shopID":"1",
+                                "itemName":"Steers Burger",
+                                "itemDescription":"this is a burger",
+                                "catID":"1",
+                                "imageUrl":"https://kauai.co.za/wp-content/uploads/2020/10/The-Normal-Burger-750x750px.jpg"
+                                ,"price":84.99
+                            },
+                            {
+                                "id":"5",
+                                "shopID":"1",
+                                "itemName":"Steers Coca cola 2L",
+                                "itemDescription":"Coke",
+                                "catID":"4",
+                                "imageUrl":"https://img.favpng.com/7/18/0/world-of-coca-cola-soft-drink-papua-new-guinea-the-coca-cola-company-png-favpng-Fe9xDAami9jBArZekHF6grqKp_t.jpg"
+                                ,"price":27.99
+                            },
+                            {
+                                "id":"6",
+                                "shopID":1,
+                                "itemName":"Steers Coca cola can 250g",
+                                "itemDescription":"Coca cola can 250g",
+                                "catID":"4",
+                                "imageUrl":"https://mpng.subpng.com/20180317/hye/kisspng-coca-cola-fizzy-drinks-fanta-sprite-coca-cola-png-transparent-images-5aadb5824842e1.913333771521333634296.jpg"
+                                ,"price":25.99
+                            }
+   
+                ]
+        },
+        {
+            "id":"2",
+            "shopName":"Debonairs",
+            "shopLocation":"Campus square",
+            "openTime":"9:00 am",
+            "closeTime":"19:00 pm",
+            "imageUrl":"https://rwrant.co.za/wp-content/uploads/2012/11/Debonairs-1.jpg",
+            "adheaderImgUrl":"https://debonairspizza.co.za/images/promos/2022/february/sweet-deal-for-two/sweet-deal-for-two_february-online-2022-website_sub-promo-image-700x353.jpg",
+            "categories":[
+                {
+                    "catID":"1",
+                    "catName":"Pizza"
+                },   {
+                    "catID":"4",
+                    "catName":"Drinks"
+                }
+            ],
+            "Items":[
+                {
+                    "id":"1",
+                    "shopID":"2",
+                    "itemName":"Pizza pineapple",
+                    "itemDescription":"this is a pizza",
+                    "catID":"1",
+                    "imageUrl":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSorWkxVQhMGVpVsDvpsFbgTk9_joqpbpPcXA&usqp=CAU"
+                    ,"price":27.99
+                },
+                {
+                    "id":"2",
+                    "shopID":"2",
+                    "itemName":"Debonairs Coca cola 2L",
+                    "itemDescription":"Coke",
+                    "catID":"4",
+                    "imageUrl":"https://img.favpng.com/7/18/0/world-of-coca-cola-soft-drink-papua-new-guinea-the-coca-cola-company-png-favpng-Fe9xDAami9jBArZekHF6grqKp_t.jpg"
+                    ,"price":25.99
+                },
+                {
+                    "id":"3",
+                    "shopID":"2",
+                    "itemName":"Debonairs Coca cola can 250g",
+                    "itemDescription":"Coca cola can 250g",
+                    "catID":"4",
+                    "imageUrl":"https://mpng.subpng.com/20180317/hye/kisspng-coca-cola-fizzy-drinks-fanta-sprite-coca-cola-png-transparent-images-5aadb5824842e1.913333771521333634296.jpg"
+                    ,"price":24.99
+                }
+                            ]
+        },
+        {
+            "id":"3",
+            "shopName":"McDonalds",
+            "shopLocation":"Campus squre",
+            "openTime":"9:00 am",
+            "closeTime":"19:00 pm",
+            "imageUrl":"https://toppng.com/uploads/preview/logo-mcdonalds-11551052037rbgskdxzkj.png",
+            "adheaderImgUrl":"https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/mcdonalds-menu-ranking-delish-uk-1622125927.jpg",
+            "categories":[
+                {
+                    "catID":"1",
+                    "catName":"Burger"
+                },
+                {
+                    "catID":"2",
+                    "catName":"Braai"
+                },
+                {
+                    "catID":"3",
+                    "catName":"Frozen"
+                },
+                {
+                    "catID":"4",
+                    "catName":"Drinks"
+                }
+                
+            ],
+
+            "Items":[
+                {
+                    "id":"1",
+                    "shopID":"3",
+                    "itemName":"Burger",
+                    "itemDescription":"this is a burger",
+                    "catID":"1",
+                    "imageUrl":"https://kauai.co.za/wp-content/uploads/2020/10/The-Normal-Burger-750x750px.jpg"
+                    ,"price":64.99
+                },
+                {
+                    "id":"2",
+                    "shopID":"3",
+                    "itemName":"Burger",
+                    "itemDescription":"this is a burger",
+                    "catID":"1",
+                    "imageUrl":"https://kauai.co.za/wp-content/uploads/2020/10/The-Normal-Burger-750x750px.jpg"
+                    ,"price":79.99
+                },
+                {
+                    "id":"3",
+                    "shopID":"3",
+                    "itemName":"Burger",
+                    "itemDescription":"this is a burger",
+                    "catID":"1",
+                    "imageUrl":"https://kauai.co.za/wp-content/uploads/2020/10/The-Normal-Burger-750x750px.jpg"
+                    ,"price":54.99
+                },
+                {
+                    "id":"4",
+                    "shopID":"3",
+                    "itemName":"Burger",
+                    "itemDescription":"this is a burger",
+                    "catID":"1",
+                    "imageUrl":"https://kauai.co.za/wp-content/uploads/2020/10/The-Normal-Burger-750x750px.jpg"
+                    ,"price":69.99
+                },
+                {
+                    "id":"2",
+                    "shopID":"3",
+                    "itemName":"Coca cola 2L",
+                    "itemDescription":"Coke",
+                    "catID":"4",
+                    "imageUrl":"https://img.favpng.com/7/18/0/world-of-coca-cola-soft-drink-papua-new-guinea-the-coca-cola-company-png-favpng-Fe9xDAami9jBArZekHF6grqKp_t.jpg"
+                    ,"price":28.99
+                },
+                {
+                    "id":"3",
+                    "shopID":"3",
+                    "itemName":"Coca cola can 250g",
+                    "itemDescription":"Coca cola can 250g",
+                    "catID":"4",
+                    "imageUrl":"https://mpng.subpng.com/20180317/hye/kisspng-coca-cola-fizzy-drinks-fanta-sprite-coca-cola-png-transparent-images-5aadb5824842e1.913333771521333634296.jpg"
+                    ,"price":24.99
+                }
+
+    ]
+        }
+    ]
+}
