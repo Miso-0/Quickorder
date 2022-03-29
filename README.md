@@ -1,5 +1,5 @@
 # Quickorder
-
+Quickorder is food delivery hybrid mobile application, built with flutter and dart.
 ![Screenshot_1646385771](https://user-images.githubusercontent.com/72578071/156736313-27a32627-dc89-49cb-bd70-a34f3de39ea6.png)
 ![Screenshot_1646385779](https://user-images.githubusercontent.com/72578071/156736329-72819faf-5a98-475c-947c-cd8de2489828.png)
 ![Screenshot_1646385791](https://user-images.githubusercontent.com/72578071/156736332-2b2516fc-c23f-4344-998f-6756b8897966.png)
