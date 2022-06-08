@@ -1,10 +1,14 @@
-// ignore_for_file: unused_local_variable
+// ignore_for_file: unused_local_variable, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:quickorder/get/controllers/primary_controller.dart';
+import 'package:quickorder/logic/models/models.dart';
 import 'package:quickorder/ui/utils/reusable_constants.dart';
+
+import '../utils/reusable_widgets.dart';
 
 class RestaurentView extends StatefulWidget {
   const RestaurentView({Key? key}) : super(key: key);
@@ -43,6 +47,10 @@ class _RestaurentViewState extends State<RestaurentView> {
 
   @override
   Widget build(BuildContext context) {
+    var args = ModalRoute.of(context)!.settings.arguments as Map;
+    String shopID = args["shopID"];
+    String itemID = args["itemID"];
+    var _pc = Get.find<PrimaryControler>();
     return WillPopScope(
       onWillPop: () async => false,
       child: SafeArea(
@@ -50,8 +58,8 @@ class _RestaurentViewState extends State<RestaurentView> {
           body: CustomScrollView(
             controller: _scrollController,
             slivers: [
-              AppBarRestaurents(),
-              getSlivers(),
+              appBarRestaurents(shopID, _pc),
+              getSlivers(shopID, itemID, _pc),
             ],
           ),
         ),
@@ -59,10 +67,10 @@ class _RestaurentViewState extends State<RestaurentView> {
     );
   }
 
-  SliverAppBar AppBarRestaurents() {
+  SliverAppBar appBarRestaurents(String shopID, PrimaryControler pc) {
     return SliverAppBar(
       backgroundColor: color2,
-      expandedHeight: MediaQuery.of(context).size.height * 0.2,
+      expandedHeight: MediaQuery.of(context).size.height * 0.25,
       pinned: true,
       elevation: 0,
       leading: IconButton(
@@ -176,21 +184,9 @@ class _RestaurentViewState extends State<RestaurentView> {
         ),
       ],
       flexibleSpace: FlexibleSpaceBar(
-        title: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Text(
-              'Romans Pizza',
-              style: GoogleFonts.openSans(
-                color: color1,
-              ),
-            ),
-          ],
-        ),
-        background: const Image(
+        background: Image(
           image: NetworkImage(
-            'https://www.simplyrecipes.com/thmb/8caxM88NgxZjz-T2aeRW3xjhzBg=/2000x1125/smart/filters:no_upscale()/__opt__aboutcom__coeus__resources__content_migration__simply_recipes__uploads__2019__09__easy-pepperoni-pizza-lead-3-8f256746d649404baa36a44d271329bc.jpg',
+            "${pc.getShop(shopID)!.adheaderImgUrl}",
           ),
           fit: BoxFit.cover,
         ),
@@ -198,25 +194,173 @@ class _RestaurentViewState extends State<RestaurentView> {
     );
   }
 
-  Widget getSlivers() {
+  Widget getSlivers(String shopID, String itemID, PrimaryControler pc) {
     return SliverList(
       delegate: SliverChildListDelegate(
         [
-          Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height * 0.4,
-            color: color2,
+          Padding(
+            padding: const EdgeInsets.fromLTRB(10, 5, 10, 0),
+            child: Row(
+              children: [
+                SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.7,
+                  child: Text(
+                    '${pc.getShop(shopID)!.shopName}, ${pc.getShop(shopID)!.shopLocation}',
+                    style: GoogleFonts.openSans(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 27,
+                      color: color3,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
-          Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height * 0.4,
-            color: color2,
+          GestureDetector(
+            child: Container(
+              padding: const EdgeInsets.fromLTRB(10, 5, 10, 10),
+              width: MediaQuery.of(context).size.width,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          const Icon(
+                            Icons.grade,
+                            size: 17,
+                            color: color4,
+                          ),
+                          const SizedBox(
+                            width: 5,
+                          ),
+                          Text(
+                            "5.5 (500 Ratings)",
+                            style: GoogleFonts.openSans(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 13,
+                              color: color4,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            "Open until ${pc.getShop(shopID)!.closeTime}",
+                            style: GoogleFonts.openSans(
+                              fontWeight: FontWeight.normal,
+                              fontSize: 13,
+                              color: color4,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            "Tap to view hours, address and more",
+                            style: GoogleFonts.openSans(
+                              fontWeight: FontWeight.normal,
+                              fontSize: 13,
+                              color: color4,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  const Icon(
+                    Icons.arrow_forward_ios,
+                    color: color4,
+                    size: 17,
+                  ),
+                ],
+              ),
+            ),
           ),
-          Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height * 0.4,
-            color: color1,
+          Visibility(
+            visible: itemID == "none" ? false : true,
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(10, 10, 10, 3),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Searched",
+                        style: GoogleFonts.openSans(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 19,
+                          color: color3,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  child: itemID == "none"
+                      ? const SizedBox()
+                      : GestureDetector(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              children: [
+                                CircleAvatar(
+                                  backgroundImage: NetworkImage(
+                                      "${pc.getItem(itemID, pc.getShop(shopID)!)!.imageUrl}"),
+                                ),
+                                const SizedBox(
+                                  width: 5,
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "${pc.getItem(itemID, pc.getShop(shopID)!)!.itemName}",
+                                      style: GoogleFonts.openSans(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 17,
+                                        color: color4,
+                                      ),
+                                    ),
+                                    Text(
+                                      "R${pc.getItem(itemID, pc.getShop(shopID)!)!.itemPrice}",
+                                      style: GoogleFonts.openSans(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 13,
+                                        color: color4,
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                ),
+              ],
+            ),
           ),
+          Visibility(
+              visible: itemID == "none" ? false : true, child: const Divider()),
+          Visibility(
+            visible: pc.hasOrderHistory.value,
+            child: getOrderAgain(pc.historyItems),
+          ),
+          Visibility(visible: pc.hasOrderHistory.value, child: const Divider()),
+          Visibility(
+            visible: true,
+            child: getMenu(pc.getShop(shopID)!.items!),
+          ),
+          const Divider(),
         ],
       ),
     );

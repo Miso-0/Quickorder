@@ -12,21 +12,23 @@ class Restaurents extends StatelessWidget {
     var _primaryController = Get.find<PrimaryControler>();
     return Padding(
       padding: const EdgeInsets.all(0),
-      child: SizedBox(
-        width: MediaQuery.of(context).size.width,
-        child: SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: List.generate(
-                  _primaryController.restaurents.length,
-                  (index) => resturentCard(
-                      _primaryController.restaurents[index], context),
+      child: Obx(
+        () => SizedBox(
+          width: MediaQuery.of(context).size.width,
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: List.generate(
+                    _primaryController.restaurents.length,
+                    (index) => resturentCard(
+                        _primaryController.restaurents[index], context),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

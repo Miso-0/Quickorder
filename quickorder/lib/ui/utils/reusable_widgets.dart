@@ -3,6 +3,7 @@ import 'package:flutter_boxicons/flutter_boxicons.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:quickorder/get/controllers/primary_controller.dart';
 import 'package:quickorder/logic/models/widget_models.dart';
 import 'package:quickorder/ui/utils/reusable_constants.dart';
 
@@ -381,6 +382,12 @@ itemSearchCard(Item item) {
 
 shopSearchCard(Shop shop) {
   return ListTile(
+    onTap: () {
+      Get.toNamed('/restaurentview', arguments: {
+        "itemID": 'none',
+        "shopID": shop.id,
+      });
+    },
     leading: CircleAvatar(
       backgroundImage: NetworkImage(
         shop.imageUrl!,
@@ -404,6 +411,114 @@ shopSearchCard(Shop shop) {
             color: color3,
           ),
         ),
+      ],
+    ),
+  );
+}
+
+Widget getMenu(List<Item> items) {
+  return SizedBox(
+    child: Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(10, 10, 10, 3),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "Menu",
+                style: GoogleFonts.openSans(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 19,
+                  color: color3,
+                ),
+              ),
+            ],
+          ),
+        ),
+        Column(
+          children: List.generate(
+            items.length,
+            (index) => rsViewItem(items[index]),
+          ),
+        )
+      ],
+    ),
+  );
+}
+
+GestureDetector rsViewItem(Item item) {
+  var pc = Get.find<PrimaryControler>();
+  return GestureDetector(
+    onTap: (() {
+      pc.saveCokies(item.id!, item.shopID!);
+    }),
+    child: Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        children: [
+          CircleAvatar(
+            backgroundImage: NetworkImage("${item.imageUrl}"),
+          ),
+          const SizedBox(
+            width: 5,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Text(
+                "${item.itemName}",
+                style: GoogleFonts.openSans(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 17,
+                  color: color4,
+                ),
+              ),
+              Text(
+                "R${item.itemPrice}",
+                style: GoogleFonts.openSans(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 13,
+                  color: color4,
+                ),
+              ),
+            ],
+          )
+        ],
+      ),
+    ),
+  );
+}
+
+Widget getOrderAgain(List items) {
+  return SizedBox(
+    child: Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.fromLTRB(10, 10, 10, 3),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                "Order Again",
+                style: GoogleFonts.openSans(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 19,
+                  color: color3,
+                ),
+              ),
+            ],
+          ),
+        ),
+        Column(
+          children: List.generate(
+            items.length,
+            (index) => rsViewItem(items[index]),
+          ),
+        )
       ],
     ),
   );

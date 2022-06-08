@@ -5,6 +5,7 @@ import 'package:quickorder/ui/utils/reusable_constants.dart';
 
 import 'package:quickorder/ui/widgets/Home%20Widgets/restaurents.dart';
 
+import '../../get/controllers/primary_controller.dart';
 import '../widgets/Home Widgets/categories.dart';
 import '../widgets/Home Widgets/popular.dart';
 import '../widgets/Home Widgets/selected_for_you.dart';
@@ -16,6 +17,7 @@ class HomeTab extends StatelessWidget {
   Widget build(BuildContext context) {
     String exampleImage =
         'https://scontent-jnb1-1.cdninstagram.com/v/t51.2885-19/s150x150/248993712_609335856915145_4674976349068797108_n.jpg?_nc_ht=scontent-jnb1-1.cdninstagram.com&_nc_cat=101&_nc_ohc=GCNshEVPEAAAX-hBgYx&edm=ABfd0MgBAAAA&ccb=7-4&oh=00_AT8JWrrMGlQJAD3Po4ebcSkoxIAzE82DO4ArCuANVSshbg&oe=620B48F8&_nc_sid=7bff83';
+    var _pc = Get.find<PrimaryControler>();
     return Scaffold(
       body: CustomScrollView(
         slivers: [
